@@ -1,9 +1,14 @@
 pipeline {
-    agent { docker { image 'maven:3.9.6-eclipse-temurin-17-alpine' } }
+    agent any
+
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
-                sh 'mvn --version'
+                script {
+                    // Compile and run Java Hello World
+                    sh 'javac HelloWorld.java'
+                    sh 'java HelloWorld'
+                }
             }
         }
     }
